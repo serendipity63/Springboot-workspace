@@ -1,0 +1,13 @@
+package com.kosta.bank.service;
+
+import com.kosta.bank.dto.Account;
+
+public class AccountServiceImpl implements AccountService {
+
+	@Override
+	public void makeAccount(Account acc) throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+}

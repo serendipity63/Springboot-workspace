@@ -1,0 +1,12 @@
+package com.kosta.bank.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MemberController {
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+}
