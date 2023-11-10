@@ -1,5 +1,7 @@
 package com.kosta.bank.controller;
 
+import java.net.URLEncoder;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,50 +20,55 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
-	private HttpSession session; 
-	
+	private HttpSession session;
+
 	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
+
 	@GetMapping("/join")
 	public String join() {
 		return "join";
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout() {
 		session.removeAttribute("user");
 		return "login";
 	}
-	
+
+	@GetMapping("/loginerror")
+	public String error(@RequestParam("err") String err, Model model) {
+		System.out.println(err);
+		model.addAttribute("err", err);
+		return "error";
+	}
+
 	@PostMapping("/login")
-	public String login(@RequestParam("id") String id,@RequestParam("password") String password, Model model) {
+	public String login(@RequestParam("id") String id, @RequestParam("password") String password, Model model) {
 		try {
-			Member member=memberService.login(id, password);
+			Member member = memberService.login(id, password);
 			session.setAttribute("user", member); // user를 멤버로
 			return "makeaccount";
-		}catch(Exception e) {
-			e.printStackTrace();
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
-	}
-	
-	@PostMapping("/join") //커맨드 객체
-	public String join(@ModelAttribute Member member, Model model) {
-		try {
-			memberService.join(member);
-			return "redirect:/login"; //로그인이 멤버를 공유한다
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("err", e.getMessage());
 			return "error";
 		}
 	}
-	
-	
-	
+
+	@PostMapping("/join") // 커맨드 객체
+	public String join(@ModelAttribute Member member, Model model) {
+		try {
+			memberService.join(member);
+			return "redirect:/login"; // 로그인이 멤버를 공유한다
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/loginerror?err=" + URLEncoder.encode(e.getMessage()); // 한글 깨져서 인코딩 해줌
+		}
+	}
+
 }

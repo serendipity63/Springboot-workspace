@@ -1,7 +1,0 @@
-package com.kosta.bank.controller;
-
-@Controller
-public class MemberController {
-
-	
-}
