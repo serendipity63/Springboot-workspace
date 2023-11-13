@@ -173,7 +173,7 @@ public class BoardController {
 		return mav;
 
 	}
-
+//
 //	@PostMapping("/like")
 //	@ResponseBody
 //	public String boardLike(@RequestParam("num") Integer num) {

@@ -33,9 +33,9 @@ public interface BoardDao {
 
 	Integer selectLikeCount(Integer num) throws Exception;
 
-	void plusBoardViewCount(Integer num) throws Exception;
-
-	void minusBoardViewCount(Integer num) throws Exception;
+//	void plusBoardLikeCount(Integer num) throws Exception;
+//
+//	void minusBoardLikeCount(Integer num) throws Exception;
 
 	void insertFile(FileVo fileVo) throws Exception;
 

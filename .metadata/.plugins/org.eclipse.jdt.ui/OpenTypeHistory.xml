@@ -2,7 +2,8 @@
 <typeInfoHistroy>
     <typeInfo handle="=bankboot/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.bank.service{AccountService.java[AccountService" modifiers="513" timestamp="1699511492274"/>
     <typeInfo handle="=bankboot/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.bank.service{MemberService.java[MemberService" modifiers="513" timestamp="1699513015605"/>
-    <typeInfo handle="=board/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.board.service{BoardService.java[BoardService" modifiers="513" timestamp="1699583391580"/>
-    <typeInfo handle="=board/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.board.dao{BoardDao.java[BoardDao" modifiers="513" timestamp="1699583319867"/>
-    <typeInfo handle="=board/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.board.service{MemberService.java[MemberService" modifiers="513" timestamp="1699586009484"/>
+    <typeInfo handle="=board/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.board.service{BoardService.java[BoardService" modifiers="513" timestamp="1699756556582"/>
+    <typeInfo handle="=board/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.board.dao{BoardDao.java[BoardDao" modifiers="513" timestamp="1699757736450"/>
+    <typeInfo handle="=board/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.board.service{MemberService.java[MemberService" modifiers="513" timestamp="1699604336377"/>
+    <typeInfo handle="=bankback/C:\/Users\/jisuu\/.gradle\/caches\/modules-2\/files-2.1\/org.springframework\/spring-webmvc\/5.3.30\/67ad9ebc6189c91942a52328f58d824cd3171fd9\/spring-webmvc-5.3.30.jar=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/gradle_used_by_scope=/main,test=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/&lt;org.springframework.web.servlet.config.annotation(WebMvcConfigurer.class[WebMvcConfigurer" modifiers="1537" timestamp="1699493568614"/>
 </typeInfoHistroy>
