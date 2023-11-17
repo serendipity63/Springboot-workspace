@@ -1,6 +1,0 @@
-package com.kosta.bank.dao;
-
-@Mapper
-public interface AccountDao {
-
-}

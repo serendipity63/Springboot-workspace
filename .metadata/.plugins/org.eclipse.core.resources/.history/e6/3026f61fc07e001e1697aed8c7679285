@@ -1,5 +1,0 @@
-package com.kosta.bank.service;
-
-public interface AccountService {
-	void makeAccount(Account acc) throws Exception;
-}
