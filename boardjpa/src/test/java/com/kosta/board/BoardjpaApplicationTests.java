@@ -1,5 +1,7 @@
 package com.kosta.board;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,12 @@ class BoardjpaApplicationTests {
 			System.out.println(board);
 		}
 
+	}
+
+	@Test
+	void selectMemberByEmail() {
+		Optional<Member> member = memberRepository.findByEmail("email");
+		System.out.println(member.get());
 	}
 
 }

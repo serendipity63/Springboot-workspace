@@ -9,12 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.kosta.board.dto.MemberDto;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -34,12 +38,15 @@ public class Member {
 	private String address;
 
 	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
-	// 필요할때 가져오는거라서 lazy
-	private List<Board> boardList = new ArrayList<>();
+	private List<Board> boardList = new ArrayList<>(); // 필요할때 가져오는거라서 lazy
 
 	@Override
 	public String toString() {
 		return String.format("[%s,%s,%s,%s,%s]", id, name, password, email, address);
 	}
 
+	public MemberDto toDto() {
+		return MemberDto.builder().id(id).name(name).password(password).email(email).address(address).build();
+
+	}
 }

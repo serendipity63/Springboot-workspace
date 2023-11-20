@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberRepository memberRepository;
 
 	@Override
-	public void join(MemberDto member) throws Exception {
+	public void join(MemberDto member) throws Exception { // dto를 가지고 entity를 만들어준다
 		Optional<Member> omember = memberRepository.findById(member.getId());
 		if (omember.isPresent())
 			throw new Exception("아이디 중복 오류");
@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 		Member member = omember.get();
 		if (!member.getPassword().equals(password))
 			throw new Exception("비번오류");
-		return MemberDto.toDto(member);
+		return MemberDto.toDto(member); // 멤버 엔터티를 가지고 dto를 만들어주는거다
 	}
 
 //	Member member=memberDao.selectMember(id);

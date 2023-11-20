@@ -35,6 +35,8 @@ public class Member {
 	private String address;
 
 	// 모델 매퍼를 안쓰고 만들어서 썼다
+	// dto가 생성되었을때 entity를 만들어준다
+
 	public static Member toEntity(MemberDto memberDto) {
 		return Member.builder().id(memberDto.getId()).name(memberDto.getName()).password(memberDto.getPassword())
 				.email(memberDto.getEmail()).address(memberDto.getAddress()).build();

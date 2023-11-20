@@ -15,7 +15,7 @@ public interface BoardService {
 
 	void readImage(Integer num, OutputStream out) throws Exception;
 
-	Integer boardWrite(Board board, List<MultipartFile> file) throws Exception;
+	Integer boardWrite(Board board, List<MultipartFile> files) throws Exception;
 
 	Integer boardModify(Board board, List<MultipartFile> fileInfo) throws Exception;
 

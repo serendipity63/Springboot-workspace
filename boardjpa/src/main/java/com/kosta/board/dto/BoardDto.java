@@ -2,6 +2,20 @@ package com.kosta.board.dto;
 
 import java.sql.Date;
 
+import com.kosta.board.entity.Board;
+import com.kosta.board.entity.Member;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class BoardDto {
 	private Integer num;
 	private String subject;
@@ -11,69 +25,14 @@ public class BoardDto {
 	private String writer;
 	private Integer viewcount;
 	private Integer likecount;
+	private String writername;
 
-	public Integer getNum() {
-		return num;
-	}
+	public Board toEntity() {
+		return Board.builder().num(num).subject(subject).content(content).fileurl(fileurl)
+				.member(Member.builder().id(writer).build()).viewcount(viewcount).likecount(likecount)
+				.writedate(writedate).build(); // entity의 속성(파라미터 안에 있는건 dto의 변수값)
 
-	public void setNum(Integer num) {
-		this.num = num;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Date getWritedate() {
-		return writedate;
-	}
-
-	public void setWritedate(Date writedate) {
-		this.writedate = writedate;
-	}
-
-	public String getFileurl() {
-		return fileurl;
-	}
-
-	public void setFileurl(String fileurl) {
-		this.fileurl = fileurl;
-	}
-
-	public String getWriter() {
-		return writer;
-	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-
-	public Integer getViewcount() {
-		return viewcount;
-	}
-
-	public void setViewcount(Integer viewcount) {
-		this.viewcount = viewcount;
-	}
-
-	public Integer getLikecount() {
-		return likecount;
-	}
-
-	public void setLikecount(Integer likecount) {
-		this.likecount = likecount;
+		// static이 아닌 인스턴스 매소드 자기 변수를 이용해서 dto를 만든다
 	}
 
 }
