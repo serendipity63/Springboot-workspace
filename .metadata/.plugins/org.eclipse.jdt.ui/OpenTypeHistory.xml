@@ -10,4 +10,5 @@
     <typeInfo handle="=bankjpa/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.bank.service{AccountService.java[AccountService" modifiers="513" timestamp="1700204409962"/>
     <typeInfo handle="=bankjpa/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.bank.service{MemberService.java[MemberService" modifiers="513" timestamp="1700205798228"/>
     <typeInfo handle="=bankjpa/C:\/Users\/jisuu\/.gradle\/caches\/modules-2\/files-2.1\/org.springframework.data\/spring-data-jpa\/2.7.17\/79480c45e245fae3e4c88f0e5cfcfa999c7edfc6\/spring-data-jpa-2.7.17.jar=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/gradle_used_by_scope=/main,test=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1700183685695"/>
+    <typeInfo handle="=univjpa/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.kosta.univ.service{UnivService.java[UnivService" modifiers="513" timestamp="1700547000463"/>
 </typeInfoHistroy>

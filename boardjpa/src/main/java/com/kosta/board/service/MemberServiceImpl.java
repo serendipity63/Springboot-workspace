@@ -10,10 +10,15 @@ import com.kosta.board.entity.Member;
 import com.kosta.board.repository.MemberRepository;
 
 @Service
+//@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberRepository memberRepository;
 
+	// private final MemberRepository memberRepository;
+//	public MemberServiceImpl(MemberRepository memberRepository) {
+//		this.memberRepository=memberRepository;
+//	}
 	@Override
 	public MemberDto login(String id, String password) throws Exception {
 		Optional<Member> omember = memberRepository.findById(id);

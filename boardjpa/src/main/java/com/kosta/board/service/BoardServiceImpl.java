@@ -17,8 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.board.dto.BoardDto;
 import com.kosta.board.entity.Board;
+import com.kosta.board.entity.Boardlike;
 import com.kosta.board.entity.FileVo;
+import com.kosta.board.entity.Member;
 import com.kosta.board.repository.BoardRepository;
+import com.kosta.board.repository.BoardlikeRepository;
 import com.kosta.board.repository.FileVoRepository;
 import com.kosta.board.util.PageInfo;
 
@@ -30,6 +33,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private FileVoRepository fileVoRepository;
+	@Autowired
+	private BoardlikeRepository boardlikeRepository;
 
 	@Override
 	public List<BoardDto> boardListByPage(PageInfo pageInfo) throws Exception {
@@ -184,17 +189,31 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Boolean isHeartBoard(String id, Integer num) throws Exception {
-		return null;
+		// 이건 뭐지? 하트 유무 감별
+		Optional<Boardlike> boardlike = boardlikeRepository.findByMember_idAndBoard_num(id, num);
+		if (boardlike.isPresent())
+			return true;
+		return false;
 	}
 
 	@Override
-	public void selHeartBoard(String id, Integer num) throws Exception {
-
-	}
-
-	@Override
-	public void delHeartBoard(String id, Integer num) throws Exception {
-
+	public Boolean selHeartBoard(String id, Integer num) throws Exception {
+		Optional<Boardlike> boardlike = boardlikeRepository.findByMember_idAndBoard_num(id, num);
+		Board board = boardRepository.findById(num).get();
+		Boolean isSelect;
+		if (boardlike.isPresent()) { // 이미 선택했을 경우->삭제
+			boardlikeRepository.deleteById(boardlike.get().getNum());
+			board.setLikecount(board.getLikecount() - 1);
+			isSelect = false;
+		} else { // 선택하지 않았을 경우 ->삽입
+			Boardlike newBoardlike = Boardlike.builder().member(Member.builder().id(id).build())
+					.board(Board.builder().num(num).build()).build();
+			boardlikeRepository.save(newBoardlike);
+			board.setLikecount(board.getLikecount() + 1);
+			isSelect = true;
+		}
+		boardRepository.save(board);
+		return isSelect;
 	}
 
 	@Override
@@ -205,9 +224,3 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 }
-
-//fileVo.setDirectory(dir);
-//fileVo.setName(file.getOriginalFilename());
-//fileVo.setSize(file.getSize());
-//fileVo.setContenttype(file.getContentType());
-//fileVo.setData(file.getBytes());

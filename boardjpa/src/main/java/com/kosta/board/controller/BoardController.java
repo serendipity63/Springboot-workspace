@@ -85,11 +85,13 @@ public class BoardController {
 //			res.put("heart", heart);
 			if (sect.equals("only-detail")) {
 				boardService.plusViewCount(num);
-				Boolean heart = boardService.isHeartBoard(null, num); // null대신 사용자 아이디를 가져와야 해서 null값으로 우선 냅둠
-				res.put("heart", false); // true면 좋아요 눌림, false면 아님
+				Boolean heart = boardService.isHeartBoard("lee", num); // null대신 사용자 아이디를 가져와야 해서 null값으로 우선 냅둠
+				res.put("heart", heart);
+//				res.put("heart", false); // true면 좋아요 눌림, false면 아님
 			} else if (sect.equals("after-modify")) {
-				Boolean heart = boardService.isHeartBoard(null, num); // null대신 사용자 아이디를 가져와야 해서 null값으로 우선 냅둠
-				res.put("heart", false);
+				Boolean heart = boardService.isHeartBoard("lee", num); // null대신 사용자 아이디를 가져와야 해서 null값으로 우선 냅둠
+				res.put("heart", heart); // true면 좋아요 눌림, false면 아님
+//				res.put("heart", false);
 			}
 			return new ResponseEntity<Map<String, Object>>(res, HttpStatus.OK);
 		} catch (Exception e) {
@@ -104,6 +106,33 @@ public class BoardController {
 			boardService.readImage(num, response.getOutputStream());
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	@GetMapping("/boardmodify/{num}")
+	public ResponseEntity<BoardDto> boardModify(@PathVariable Integer num) {
+		try {
+			BoardDto board = boardService.boardDetail(num);
+			return new ResponseEntity<BoardDto>(board, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<BoardDto>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@GetMapping("/boardlike/{num}")
+	public ResponseEntity<Map<String, Object>> boardLike(@PathVariable Integer num) {
+		try {
+			Map<String, Object> res = new HashMap<>();
+			Boolean selectBoard = boardService.selHeartBoard("lee", num);
+			res.put("isSelect", selectBoard);
+			Integer likeCount = boardService.boardDetail(num).getLikecount();
+			res.put("likeCount", likeCount);
+			return new ResponseEntity<Map<String, Object>>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+
 		}
 	}
 
@@ -134,14 +163,4 @@ public class BoardController {
 		}
 	}
 
-	@GetMapping("/boardmodify/{num}")
-	public ResponseEntity<BoardDto> boardModify(@PathVariable Integer num) {
-		try {
-			BoardDto board = boardService.boardDetail(num);
-			return new ResponseEntity<BoardDto>(board, HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<BoardDto>(HttpStatus.BAD_REQUEST);
-		}
-	}
 }

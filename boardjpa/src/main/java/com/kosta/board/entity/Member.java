@@ -37,8 +37,11 @@ public class Member {
 	@Column
 	private String address;
 
-	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
 	private List<Board> boardList = new ArrayList<>(); // 필요할때 가져오는거라서 lazy
+
+	@OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+	private List<Boardlike> boardlike = new ArrayList<>(); // 필요할때 가져오는거라서 lazy
 
 	@Override
 	public String toString() {

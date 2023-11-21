@@ -9,6 +9,7 @@ import com.kosta.board.dto.BoardDto;
 import com.kosta.board.util.PageInfo;
 
 public interface BoardService {
+
 	List<BoardDto> boardListByPage(PageInfo pageInfo) throws Exception;
 
 	BoardDto boardDetail(Integer num) throws Exception;
@@ -27,8 +28,6 @@ public interface BoardService {
 
 	Boolean isHeartBoard(String id, Integer num) throws Exception;
 
-	void selHeartBoard(String id, Integer num) throws Exception;
-
-	void delHeartBoard(String id, Integer num) throws Exception;
+	Boolean selHeartBoard(String id, Integer num) throws Exception;
 
 }
