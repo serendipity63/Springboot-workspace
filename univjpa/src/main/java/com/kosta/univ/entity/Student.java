@@ -44,25 +44,25 @@ public class Student {
 	private Integer height;
 	@Column
 	private Integer weight;
-	@Column
-	private Integer deptno1;
-	@Column
-	private Integer deptno2;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "profno")
 	private Professor professor;
 
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "deptno1", referencedColumnName = "deptno")
-////	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "deptno2", referencedColumnName = "deptno")
-//
-//	private Department department;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "deptno1")
+	private Department dept1;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "deptno2")
+	private Department dept2;
 
 	@Override
 	public String toString() {
-		return String.format("[%d,%s,%s,%d]", studno, name, id, grade);
+		return String.format("[%d,%s,%s,%d,%s,%s,%s,%d,%d,%d,%s,%d,%s,%d,%s]", studno, name, id, grade, jumin, birthday,
+				tel, height, weight, dept1.getDeptno(), dept1.getDname(), dept2 == null ? null : dept2.getDeptno(),
+				dept2 == null ? null : dept2.getDname(), professor == null ? null : professor.getProfno(),
+				professor == null ? null : professor.getName());
 	}
 
 }
