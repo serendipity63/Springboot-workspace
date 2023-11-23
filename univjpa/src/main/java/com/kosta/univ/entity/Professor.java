@@ -56,7 +56,7 @@ public class Professor {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return String.format("[%d,%s,%s,%s,%d,%s,%d,%s,%s,%d,%s]", profno, name, id, position, pay, hiredate, bonus,
+				email, hpage, department.getDeptno(), department.getDname());
 	}
 }

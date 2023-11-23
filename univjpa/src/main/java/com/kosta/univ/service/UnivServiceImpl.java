@@ -31,13 +31,23 @@ public class UnivServiceImpl implements UnivService {
 	}
 
 	@Override
+	@Transactional
 	public List<Student> studentListInDept1ByDeptName(String deptName) throws Exception {
-		return null;
+		Optional<Department> odepartment = departmentRepository.findByDname(deptName);
+		if (odepartment.isEmpty())
+			throw new Exception("학과명 오류");
+		return new ArrayList<>(odepartment.get().getStudentList1());
+		// return studentRepository.findByDept1_deptno(odepartment.get().getDeptno());
 	}
 
 	@Override
+	@Transactional
 	public List<Student> studentListInDept2ByDeptName(String deptName) throws Exception {
-		return null;
+		Optional<Department> odepartment = departmentRepository.findByDname(deptName);
+		if (odepartment.isEmpty())
+			throw new Exception("학과명 오류");
+		return new ArrayList<>(odepartment.get().getStudentList2());
+		// return studentRepository.findByDept2_deptno(odepartment.get().getDeptno());
 	}
 
 	@Override
@@ -47,44 +57,65 @@ public class UnivServiceImpl implements UnivService {
 
 	@Override
 	public List<Student> studentListByNoProfessor() throws Exception {
-		return null;
+		return studentRepository.findByProfessorIsNull();
 	}
 
 	@Override
 	public Student studentByStudno(Integer studno) throws Exception {
-		return null;
-//				studentRepository.findById(studno);
+		Optional<Student> ostudent = studentRepository.findById(studno);
+		if (ostudent.isEmpty())
+			throw new Exception("학번 오류");
+		return ostudent.get();
 	}
 
 	@Override
 	public Student studentByJumin(String jumin) throws Exception {
-		return null;
+		Optional<Student> ostudent = studentRepository.findByJumin(jumin);
+		if (ostudent.isEmpty())
+			throw new Exception("주민번호 오류");
+		return ostudent.get();
 	}
 
 	@Override
+	@Transactional
 	public List<Student> studentListByProfNo(Integer profNo) throws Exception {
-		return null;
+		Optional<Professor> oprofessor = professorRepository.findById(profNo);
+		if (oprofessor.isEmpty())
+			throw new Exception("교수번호 오류");
+		return new ArrayList<>(oprofessor.get().getStudentList());
 	}
 
 	@Override
+	@Transactional
 	public List<Student> studentListByProfName(String profName) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Professor> professorList = professorRepository.findByName(profName);
+		List<Student> studentList = new ArrayList<>();
+		for (Professor professor : professorList) {
+			studentList.addAll(professor.getStudentList());
+		}
+		return studentList;
 	}
 
 	@Override
 	public Professor professorByProfNo(Integer profNo) throws Exception {
-		return null;
+		Optional<Professor> oprofessor = professorRepository.findById(profNo);
+		if (oprofessor.isEmpty())
+			throw new Exception("교수번호 오류");
+		return oprofessor.get();
 	}
 
 	@Override
 	public List<Professor> professorListByProfName(String profName) throws Exception {
-		return null;
+		return professorRepository.findByName(profName);
 	}
 
 	@Override
+	@Transactional
 	public List<Professor> professorListByDeptNo(Integer deptNo) throws Exception {
-		return null;
+		Optional<Department> odepartment = departmentRepository.findById(deptNo);
+		if (odepartment.isEmpty())
+			throw new Exception("학과번호 오류");
+		return new ArrayList<>(odepartment.get().getProfessorList());
 	}
 
 	@Override
@@ -106,22 +137,25 @@ public class UnivServiceImpl implements UnivService {
 		Optional<Department> odepartment = departmentRepository.findById(deptNo);
 		if (odepartment.isEmpty())
 			throw new Exception("학과번호 오류");
-		return null;
+		return odepartment.get();
 	}
 
 	@Override
 	public Department departmentByDeptName(String deptName) throws Exception {
-		return null;
+		Optional<Department> odepartment = departmentRepository.findByDname(deptName);
+		if (odepartment.isEmpty())
+			throw new Exception("학과이름 오류");
+		return odepartment.get();
 	}
 
 	@Override
 	public List<Department> departmentListByPart(Integer part) throws Exception {
-		return null;
+		return departmentRepository.findByPart(part);
 	}
 
 	@Override
 	public List<Department> departmentListByBuild(String build) throws Exception {
-		return null;
+		return departmentRepository.findByBuild(build);
 	}
 
 }

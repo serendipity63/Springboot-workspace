@@ -10,4 +10,5 @@
 <aop-project name="etc"/>
 <aop-project name="bankboot"/>
 <aop-project name="board"/>
+<aop-project name="univdsl"/>
 </aop-reference-model>

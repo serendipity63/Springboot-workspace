@@ -35,7 +35,7 @@ public class Student {
 	@Column
 	private Integer grade;
 	@Column
-	private Integer jumin;
+	private String jumin;
 	@Column
 	private Date birthday;
 	@Column

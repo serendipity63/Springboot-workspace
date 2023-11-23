@@ -18,7 +18,7 @@ public interface BoardService {
 
 	void join(Member member) throws Exception;
 
-	Member memberByBoardNum(Integer num) throws Exception;
+	Member memberInfoByBoardNum(Integer num) throws Exception;
 
 	Board boardInfo(Integer num) throws Exception;
 
@@ -33,4 +33,6 @@ public interface BoardService {
 	Boolean selectBoardLike(String id, Integer num) throws Exception;
 
 	Boolean selectedBoardLike(String id, Integer num) throws Exception;
+
+	void plusViewCount(Integer num) throws Exception;
 }

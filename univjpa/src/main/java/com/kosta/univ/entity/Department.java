@@ -44,4 +44,8 @@ public class Department {
 	@OneToMany(mappedBy = "dept2", fetch = FetchType.LAZY)
 	private List<Student> studentList2 = new ArrayList<>();
 
+	@Override
+	public String toString() {
+		return String.format("[%d,%s,%d,%s]", deptno, dname, part, build);
+	}
 }
