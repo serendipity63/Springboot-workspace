@@ -63,10 +63,10 @@ public class UnivRepository {
 		QStudent student = QStudent.student;
 		QDepartment department1 = new QDepartment("department1");
 		QDepartment department2 = new QDepartment("department2");
-		return jpaQueryFactory.selectFrom(student).join(department1).on(student.deptno1.eq(department.deptno))
-				.leftJoin(department2).on(student.deptno2.eq(department.deptno))
-				.where(student.deptno1.eq(deptno).or(student.deptno2.eq(deptno))).fetch();
-
+//		return jpaQueryFactory.selectFrom(student).join(department1).on(student.deptno1.eq(department.deptno))
+//				.leftJoin(department2).on(student.deptno2.eq(department.deptno))
+//				.where(student.deptno1.eq(deptno).or(student.deptno2.eq(deptno))).fetch();
+		return null;
 	}
 
 	public List<Student> getStudentByProfessorNo(Integer profno) throws Exception {

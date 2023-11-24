@@ -137,7 +137,8 @@ public class UnivServiceImpl implements UnivService {
 
 	@Override
 	public List<Student> getStudentByDeptNameAndGrade(String deptName, Integer grade) throws Exception {
-		return univRepository.findStudentByDeptNameAndGrade(deptName, grade);
+//		return univRepository.findStudentByDeptNameAndGrade(deptName, grade);
+		return null;
 	}
 
 	@Override
