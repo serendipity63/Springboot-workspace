@@ -1,5 +1,6 @@
 package com.kosta.sec.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -14,6 +15,9 @@ import com.kosta.sec.config.oauth.PrincipalOauth2UserService;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private PrincipalOauth2UserService principalOauth2UserService;
 
 	@Bean // 메소드 있는 오브젝트를 ioc에 등록한다
 	public BCryptPasswordEncoder paswordEncoder() {
@@ -30,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().formLogin().loginPage("/login") // 로그인 페이지
 				.loginProcessingUrl("/loginProc") // 로그인 프로세스
 				.defaultSuccessUrl("/") // 로그인 처리 url
-				.and().oauth2Login().loginPage("/login").userInfoEndpoint()
-				.userService(new PrincipalOauth2UserService());
+				.and().oauth2Login().loginPage("/login").redirectionEndpoint().baseUri("/oauth2/callback/*").and()
+				.userInfoEndpoint().userService(principalOauth2UserService);
 
 	}
 

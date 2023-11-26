@@ -35,6 +35,8 @@ public class IndexController {
 		System.out.println("principal:" + principal);
 		System.out.println(principal.getUsername());
 		System.out.println(principal.getPassword());
+		System.out.println(principal.getUser().getProvider());
+		System.out.println(principal.getUser().getProviderId());
 		Iterator<? extends GrantedAuthority> iter = principal.getAuthorities().iterator();
 		while (iter.hasNext()) {
 			GrantedAuthority auth = iter.next();

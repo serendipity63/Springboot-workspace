@@ -14,6 +14,7 @@ import com.kosta.sec.repository.UserRepository;
 // (AuthenticationManager를 거쳐 AuthenticationProvider에 의해 호출됨)
 @Service
 public class PrincipalsDetailsService implements UserDetailsService {
+
 	@Autowired
 	private UserRepository userRepository;
 

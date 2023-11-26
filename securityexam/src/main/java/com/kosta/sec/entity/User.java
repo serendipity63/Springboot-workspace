@@ -12,6 +12,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@Builder
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +31,11 @@ public class User {
 	private String password;
 	private String email;
 	private String roles;
+	// OAuth를 위해 구성한 추가 필드 2개
+	private String provider;
+	private String providerId;
+
 	@CreationTimestamp
 	private Timestamp createDate;
+
 }
