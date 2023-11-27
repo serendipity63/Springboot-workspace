@@ -2,13 +2,9 @@
 <aop-reference-model>
 <aop-project name="boardjpa"/>
 <aop-project name="boarddsl"/>
-<aop-project name="bankback"/>
-<aop-project name="etc"/>
 <aop-project name="univdsl"/>
 <aop-project name="bankjpa"/>
 <aop-project name="boardback"/>
 <aop-project name="univjpa"/>
 <aop-project name="bankdsl"/>
-<aop-project name="bankboot"/>
-<aop-project name="board"/>
 </aop-reference-model>
